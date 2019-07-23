@@ -9,3 +9,6 @@ This program is a project written by for education next technologies:
 * pyqt5
 * pytest
 * etc
+
+# Install environments
+
