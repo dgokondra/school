@@ -1,0 +1,20 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>icons/fiction.png</file>
+    <file>icons/school.png</file>
+    <file>icons/logotype.png</file>
+    <file>icons/addBookToolbarImage.png</file>
+    <file>icons/clearBtnIcon.png</file>
+    <file>icons/exitToolbarImage.png</file>
+    <file>icons/fictionbookTabImage.png</file>
+    <file>icons/helpToolbarImage.png</file>
+    <file>icons/key.png</file>
+    <file>icons/logo.png</file>
+    <file>icons/saveBtnIcon.png</file>
+    <file>icons/schoolbookTabImage.png</file>
+    <file>icons/searchBookToolbarImage.png</file>
+    <file>icons/searchBtnIcon.png</file>
+    <file>icons/unloadBookToolbarImage.png</file>
+    <file>icons/cancelBtnIcon.png</file>
+  </qresource>
+</RCC>
