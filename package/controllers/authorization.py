@@ -19,6 +19,7 @@ class LoginWindow(QDialog, Ui_Dialog):
         """initialising the instance of the window to login in the system"""
         super().__init__()
         self.setupUi(self)
+        logger.info('The login window is open')
         self.current_window = self
         self.login_button.clicked.connect(lambda: self.sign_in())
 
