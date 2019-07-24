@@ -53,3 +53,11 @@ You will open the directory with the project and will run:
 workon your_environment
 PYTHONPATH=. pytest tests/
 ```
+
+# License
+
+It is open-source application written by only for educational purpoces. Thank you for images this [site](https://www.clipart.email/download/1755815.html).
+
+# Author
+
+E.Karandasov, 2019
