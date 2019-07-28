@@ -3,15 +3,24 @@ from PyQt5 import QtTest
 
 
 @pytest.fixture
-def login_attempt(qtbot):
-    def callback(test_login, test_password, widget_name):
-        widget = widget_name()
+def open_window(qtbot):
+    def callback(window):
+        widget = window()
         qtbot.addWidget(widget)
         widget.show()
         qtbot.wait_for_window_shown(widget)
+        QtTest.QTest.qWait(3 * 200)
+        return widget
+    return callback
+
+
+@pytest.fixture
+def login_attempt(qtbot):
+    def callback(open_window, test_login, test_password, widget_name):
+        widget = open_window(widget_name)
         qtbot.keyClicks(widget.login_edit, test_login)
         qtbot.keyClicks(widget.password_edit, test_password)
-        QtTest.QTest.qWait(3 * 400)
+        QtTest.QTest.qWait(3 * 200)
         return widget
     return callback
 

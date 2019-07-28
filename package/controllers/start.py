@@ -3,7 +3,7 @@
 import sys
 
 from loguru import logger
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog, QWidget
 
 from package.views.start_view import Ui_MainWindow
 from package.controllers.help import HelpWindow
@@ -29,30 +29,30 @@ class Toolbar:
     def selected_window(self):
         return self._selected_window
 
-    def _set_event_for_toolbar_element(self):
+    def _set_event_for_toolbar_element(self) -> None:
         """binds the widget with the event"""
         for btn, event in self._btn_event_mapper.items():
             btn.triggered.connect(event)
 
-    def _open_window(self, log_message, opening_window):
+    def _open_window(self, log_message: str, opening_window: QDialog or QWidget) -> None:
         logger.info(log_message)
         self._selected_window = opening_window()
         if self.selected_window:
             self.selected_window.show()
 
-    def _search_book(self):
+    def _search_book(self) -> None:
         """opens the window for searching the books"""
         self._open_window('User wants to search need books', SelectSearchingBookTypeWindow)
 
-    def _add_book(self):
+    def _add_book(self) -> None:
         """opens the window for adding the book"""
         self._open_window('User wants to add a new books', SelectAddingBookTypeWindow)
 
-    def _unload_books(self):
+    def _unload_books(self) -> None:
         """unloads all books from database to the excel file"""
         self._open_window('User wants to unload books to the excel file', ExcelUnloader)
 
-    def _show_help(self):
+    def _show_help(self) -> None:
         """opens the window containing the help information"""
         self._open_window('User wants to get help information', HelpWindow)
 
@@ -69,8 +69,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         ]
         self.toolbar = self.set_toolbar_events(self._toolbar_buttons)
 
-    def set_toolbar_events(self, btns):
-        """creates the toolbar of the window"""
+    def set_toolbar_events(self, btns) -> Toolbar:
+        """
+        creates the toolbar of the window
+
+        :param btns: list contains button widgets
+        :return:
+        """
         return Toolbar(btns)
 
 

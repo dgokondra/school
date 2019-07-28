@@ -21,7 +21,7 @@ class TestLogin:
         (Config.ACCOUNT['LOGIN'], '', Config.MESSAGES['ERROR_LOGIN_MESSAGE']),
         ('', '', Config.MESSAGES['ERROR_LOGIN_MESSAGE']),
     ])
-    def test_login_to_the_system(self, qtbot, login_attempt, login, password, message):
-        widget = login_attempt(login, password, LoginWindow)
+    def test_login_to_the_system(self, qtbot, login_attempt, login, password, message, open_window):
+        widget = login_attempt(open_window, login, password, LoginWindow)
         qtbot.mouseClick(widget.login_button, QtCore.Qt.LeftButton)
         assert widget.error_label.text() == message

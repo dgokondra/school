@@ -14,14 +14,14 @@ class TestLoginToTheSystem:
     Тест, что при успешном логировании откроется главное окно, а при неуспешном - нет.
     """
 
-    def test_successful_login(self, qtbot, login_attempt, assert_login_attempt):
-        widget = login_attempt(Config.ACCOUNT['LOGIN'], Config.ACCOUNT['PASSWORD'], LoginWindow)
+    def test_successful_login(self, qtbot, login_attempt, assert_login_attempt, open_window):
+        widget = login_attempt(open_window, Config.ACCOUNT['LOGIN'], Config.ACCOUNT['PASSWORD'], LoginWindow)
         assert_login_attempt(widget, LoginWindow)
         qtbot.mouseClick(widget.login_button, QtCore.Qt.LeftButton)
         assert_login_attempt(widget, MainWindow)
 
-    def test_failure_login(self, qtbot, login_attempt, assert_login_attempt):
-        widget = login_attempt('sdgfer', '23erff232g@#', LoginWindow)
+    def test_failure_login(self, qtbot, login_attempt, assert_login_attempt, open_window):
+        widget = login_attempt(open_window, 'sdgfer', '23erff232g@#', LoginWindow)
         assert_login_attempt(widget, LoginWindow)
         qtbot.mouseClick(widget.login_button, QtCore.Qt.LeftButton)
         assert_login_attempt(widget, LoginWindow)
