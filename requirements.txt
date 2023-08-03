@@ -1,5 +1,5 @@
 xlsxwriter==1.1
-loguru==0.3.0
+loguru==0.5.3
 pytest==5.0.1
 pyqt5==5.11.2
 pyqt5-tools==5.11.2.1.3
